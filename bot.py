@@ -22,8 +22,7 @@ if cfg.SESSION_STRING:
         "person",
         api_id=cfg.API_ID,
         api_hash=cfg.API_HASH,
-        session_string=cfg.SESSION_STRING
-    ).start()
+        session_string=cfg.SESSION_STRING).start()
 else:
     user = None
 
