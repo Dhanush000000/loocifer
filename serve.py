@@ -4,7 +4,7 @@ from os import environ
 from aiohttp import ClientSession, ClientTimeout, web
 
 BASE_URL = environ.get('RENDER_EXTERNAL_URL', '')
-PORT = environ.get('PORT', '')
+PORT = environ.get('PORT', '8080')
 
 route = web.RouteTableDef()
 
