@@ -8,10 +8,10 @@ from os import path, getenv
 class Config:
     API_ID = int(getenv("API_ID", "20389440"))
     API_HASH = getenv("API_HASH", "a1a06a18eb9153e9dbd447cfd5da2457")
-    BOT_TOKEN = getenv("BOT_TOKEN", "7687209126:AAHyV4-HnK0t430417Ce_SnOjN7EFzpJeNQ")
-    SESSION_STRING = getenv("SESSION_STRING", "BQD6zg0AkteC-fzmT32_UFWFwlyxIL1UeP187MqL7Vty74xeg9F5WOnXM3o5hv45l_sNznIHBvxm18vWFEF038qDS6EqnS7QwwaSNm--lZT4DoT-cDhRNn2AGBLSXBTgpmPx9CJT6jfstBHA9nYCfQ3-PMWFH9gofNfMQl2YR74DdqveVwHaZC5WkqA55Mckfnd5-AyIsdIYJPNv3R9GQVcQSkK0ftl8rXDqc3Rl7RmbBtCxpZlIIAyfB9GNhbvQBoK7GalEoStcJjKfeq7-ETbbwtjCsotDvhVKYPABeyX3jNALWJJdFYXHB2M4wm35A1bLzXQ7oSrjXNNm_ZR5g9sR9Lf5UgAAAAFry-lQAA")
-    SUDO = list(map(int, getenv("SUDO", "5798247275 1397661911").split()))
-    MONGO_URI = getenv("MONGO_URI", "mongodb+srv://dhanush1236:dhanush1236@cluster0.gxssv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    BOT_TOKEN = getenv("BOT_TOKEN", "6523760901:AAEdPrDJXZTOmZS3G7MxFidl_HrBXyyTmRQ")
+    SESSION_STRING = getenv("SESSION_STRING", "BQD6zg0AVuRfNFV9JWiyh1dEGyvkeRuvotQ1rOUetrRVW9V-YU1Yqro5X4157xNXKxQX6DWeERYzvOINFEPa69uftD53il6OnCEdPBvZZB6bqkcZ0wVXHjMPa5FYG4HMic05tP4RQaPYhMwMU4WnFleH23TId-7y5C0_RphoDRDpyzyegpfpjM59rLU8ll_0jcuNjjckNZ2IVrvpZ0oCjY23eGd5MY1RT9bWBDhrwCrYsFY0O-R_MT5XSzlcn79NdXtZwvn-2xeaEaV0EeMgkoed_WarZYAjDgw6JKvBpJ6gEbZlPmCMjsSqys9paP31ojSHMi-dsOZ9wfcP6DQ8hsI-zLvsbQAAAAGNfGbLAA")
+    SUDO = list(map(int, getenv("SUDO", "5798247275").split()))
+    MONGO_URI = getenv("MONGO_URI", "mongodb+srv://sushankm16:4i1WAfPYKWyqPIDD@cluster0.sngp9pz.mongodb.net/?retryWrites=true&w=majority")
 
 cfg = Config()
 

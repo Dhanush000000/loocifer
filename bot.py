@@ -4,29 +4,46 @@
 
 import random, asyncio
 
+from aiohttp import web
 from pyrogram.types import Chat, Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import filters, Client, errors, enums
 from pyrogram.errors import FloodWait
-from database import add_user, add_group, all_users, all_groups, users, remove_user
-from configs import cfg
 
-app = Client(
+from configs import cfg
+from database import add_user, add_group, all_users, all_groups, users, remove_user
+from serve import server, ping_server, BASE_URL, PORT
+
+
+app: Client = Client(
     "approver",
     api_id=cfg.API_ID,
     api_hash=cfg.API_HASH,
     bot_token=cfg.BOT_TOKEN
-)
+).start()
 
 if cfg.SESSION_STRING:
     user = Client(
         "person",
         api_id=cfg.API_ID,
         api_hash=cfg.API_HASH,
-        session_string=cfg.SESSION_STRING)
+        session_string=cfg.SESSION_STRING
+    ).start()
 else:
     user = None
 
-gif = [ 'https://envs.sh/Psx.jpg' ]
+gif = [
+    'https://te.legra.ph/file/a1b3d4a7b5fce249902f7.mp4',
+    'https://te.legra.ph/file/0c855143a4039108df602.mp4',
+    'https://te.legra.ph/file/d7f3f18a92e6f7add8fcd.mp4',
+    'https://te.legra.ph/file/9e334112ee3a4000c4164.mp4',
+    'https://te.legra.ph/file/652fc39ae6295272699c6.mp4',
+    'https://te.legra.ph/file/702ca8761c3fd9c1b91e8.mp4',
+    'https://te.legra.ph/file/a1b3d4a7b5fce249902f7.mp4',
+    'https://te.legra.ph/file/d7f3f18a92e6f7add8fcd.mp4',
+    'https://te.legra.ph/file/0c855143a4039108df602.mp4',
+    'https://te.legra.ph/file/9e334112ee3a4000c4164.mp4',
+    'https://te.legra.ph/file/702ca8761c3fd9c1b91e8.mp4'
+]
 
 
 async def send_approval_message(user_id: int, user_mention: str, chat: Chat, client: Client):
@@ -34,7 +51,7 @@ async def send_approval_message(user_id: int, user_mention: str, chat: Chat, cli
         try:
             await app.send_video(user_id,
                                 random.choice(gif),
-                                f"**Hello {user_mention}!\nWelcome To {chat.title}\n\n__Powerd By Hanuman Predictions**")
+                                f"**Hello {user_mention}!\nWelcome To {chat.title}\n\n__Powerd By : @VJ_Botz __**")
         except:
             pass
         await client.approve_chat_join_request(chat.id, user_id)
@@ -62,18 +79,21 @@ async def op(_, m :Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/VINAYAKAPREDICTIONS_bot?startgroup")
+                    InlineKeyboardButton("🗯 Channel", url="https://t.me/vj_botz"),
+                    InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
+                ],[
+                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
                 ]
             ]
         )
         add_user(m.from_user.id)
-        await m.reply_photo("https://envs.sh/Psx.jpg", caption="**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By Hanuman Predictions**".format(m.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard)
+        await m.reply_photo("https://graph.org/file/d57d6f83abb6b8d0efb02.jpg", caption="**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(m.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard)
 
     elif m.chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
         keyboar = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/VINAYAKAPREDICTIONS_bot?startgroup")
+                    InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/vjmasterblastbot?startgroup")
                 ]
             ]
         )
@@ -110,12 +130,15 @@ async def chk(_, cb : CallbackQuery):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/VINAYAKAPREDICTIONS_bot?startgroup")
+                    InlineKeyboardButton("🗯 Channel", url="https://t.me/VJ_Botz"),
+                    InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
+                ],[
+                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
                 ]
             ]
         )
         add_user(cb.from_user.id)
-        await cb.message.edit("**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By Hanuman**".format(cb.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard, disable_web_page_preview=True)
+        await cb.message.edit("**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(cb.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard, disable_web_page_preview=True)
     print(cb.from_user.first_name +" Is started Your Bot!")
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ info ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -195,5 +218,14 @@ async def fcast(_, m : Message):
 
     await lel.edit(f"✅Successfull to `{success}` users.\n❌ Faild to `{failed}` users.\n👾 Found `{blocked}` Blocked users \n👻 Found `{deactivated}` Deactivated users.")
 
-print("I'm Alive Now!")
-app.run()
+async def main():
+    if BASE_URL and PORT:
+        await server.setup()
+        await web.TCPSite(server, '0.0.0.0', PORT).start()
+        app.loop.create_task(ping_server())
+        print('Ping server si running')
+    print("I'm Alive Now!")
+
+
+app.loop.run_until_complete(main())
+app.loop.run_forever()
