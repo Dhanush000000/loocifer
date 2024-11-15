@@ -50,7 +50,7 @@ async def send_approval_message(user_id: int, user_mention: str, chat: Chat, cli
         try:
             await app.send_video(user_id,
                                 random.choice(gif),
-                                f"**Hello {user_mention}!\nWelcome To {chat.title}\n\n__Powerd By : @VJ_Botz __**")
+                                f"**Hello {user_mention}!\nWelcome To {chat.title}**")
         except:
             pass
         await client.approve_chat_join_request(chat.id, user_id)
@@ -78,21 +78,18 @@ async def op(_, m :Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🗯 Channel", url="https://t.me/vj_botz"),
-                    InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
-                ],[
-                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
+                    InlineKeyboardButton("Channel", url="https://t.me/+q1uneCWs9OkwZDc9")
                 ]
             ]
         )
         add_user(m.from_user.id)
-        await m.reply_photo("https://graph.org/file/d57d6f83abb6b8d0efb02.jpg", caption="**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(m.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard)
+        await m.reply_photo("https://envs.sh/LHd.jpg", caption="**🦊 Hello {}!\nI'm an auto approve Bot.**".format(m.from_user.mention), reply_markup=keyboard)
 
     elif m.chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
         keyboar = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/vjmasterblastbot?startgroup")
+                    InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/LOOCIFARACCEPT_Bot?startgroup")
                 ]
             ]
         )
@@ -129,15 +126,12 @@ async def chk(_, cb : CallbackQuery):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🗯 Channel", url="https://t.me/VJ_Botz"),
-                    InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
-                ],[
-                    InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
+                    InlineKeyboardButton("Channel", url="https://t.me/+q1uneCWs9OkwZDc9")
                 ]
             ]
         )
         add_user(cb.from_user.id)
-        await cb.message.edit("**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(cb.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard, disable_web_page_preview=True)
+        await cb.message.edit("**🦊 Hello {}!\nI'm an auto approve Bot.**".format(cb.from_user.mention), reply_markup=keyboard, disable_web_page_preview=True)
     print(cb.from_user.first_name +" Is started Your Bot!")
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ info ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
