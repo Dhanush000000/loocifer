@@ -3,7 +3,7 @@
 # Ask Doubt on telegram @KingVJ01
 
 F
-FROM python:3.11-slim
+FROM python:slim
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends g++
 
