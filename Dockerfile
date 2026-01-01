@@ -2,8 +2,7 @@
 # Subscribe YouTube Channel For Amazing Bot @Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
-F
-FROM python:slim
+FROM python:3.11-slim
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends g++
 
